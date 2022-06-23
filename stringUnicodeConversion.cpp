@@ -17,12 +17,8 @@ std::map<std::string, std::string> dictionary;
 std::list<std::string> ConvertToUnicode(std::string str) {
     std::list<std::string> unicodeString;
     for (int counter1=0; counter1< str.length(); counter1++) {
-        for (auto const& pair : dictionary) {
-            if (str[counter1] == pair.first[0]) {
-                unicodeString.push_back(pair.second);
-                break;
-            }
-        }
+        std::string tempvar(1, str[counter1]);
+        unicodeString.push_back(dictionary[tempvar]);
     }
     return unicodeString;
 }
